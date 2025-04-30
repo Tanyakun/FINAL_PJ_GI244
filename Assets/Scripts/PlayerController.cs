@@ -20,8 +20,10 @@ public class PlayerController : MonoBehaviour
     private Coroutine smashRoutine;
 
     public Image[] hearts; // Image HP
-    private int lives = 2;
-    private Vector3 spawnPoint;
+    private int lives = 2; // HP Player
+    private Vector3 spawnPoint; // Spawn player
+
+    public GameObject gameOverPanel; // Panel Game Over
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -65,8 +67,15 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             hearts[0].enabled = false; // Last hide HP
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true); // Game Over Panel On
+            }
+            enabled = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;
             Destroy(gameObject);
-        }
+        }// ถ้าตายครบแล้วจะหยุดการทำงานและจะทำลายทิ้ง
     }// Respawn 2 lives
 
     private void UpdateHeartsUI()

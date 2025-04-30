@@ -23,6 +23,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject bossPrefab; //Boss
     public GameObject powerUpPrefab; //GetItem
 
+    public GameObject endPanel;// End Panel
+
     private int currentWaveIndex = 0;
 
     void Start()
@@ -108,7 +110,18 @@ public class SpawnManager : MonoBehaviour
             }// enemy eliminated for next wave
 
             currentWaveIndex++;
+
         }
+
+        while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            yield return null;
+        }// enemy eliminated for next wave
+
+        if (endPanel != null)
+        {
+            endPanel.SetActive(true);
+        }// Game Win Panel On
 
     } 
 

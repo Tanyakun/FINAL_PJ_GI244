@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,8 +15,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 d = player.transform.position - transform.position;
-        Vector3 dir = d.normalized;
-        rb.AddForce(dir * speed);
+        if (player != null)
+        {
+            Vector3 d = player.transform.position - transform.position;
+            Vector3 dir = d.normalized;
+            rb.AddForce(dir * speed);
+        }// ตรวจสอบว่าผู้เล่นยังอยู่ในแมพรึป่าว
     }
 }
