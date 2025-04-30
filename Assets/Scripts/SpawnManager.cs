@@ -14,11 +14,13 @@ public class SpawnManager : MonoBehaviour
         public int delayStart;
         public float spawnInterval;
         public int numberOfPowerUp;
+        public int totalSpawnBoss;
     }
 
     public Wave[] waves; //wavegame
     public Transform[] spawnPoints; //SpawnPoints
     public GameObject enemyPrefab; //Enemy
+    public GameObject bossPrefab; //Boss
     public GameObject powerUpPrefab; //GetItem
 
     private int currentWaveIndex = 0;
@@ -92,6 +94,13 @@ public class SpawnManager : MonoBehaviour
                 Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
                 yield return new WaitForSeconds(wave.spawnInterval);
             }// Number of enemies
+
+            for (int i = 0; i < wave.totalSpawnBoss; i++)
+            {
+                Transform spawnPoint = selectedSpawnPoints[Random.Range(0, selectedSpawnPoints.Count)];
+                Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+                yield return new WaitForSeconds(wave.spawnInterval); // Optional: wait between boss spawns
+            }// Number of Boss
 
             while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
             {

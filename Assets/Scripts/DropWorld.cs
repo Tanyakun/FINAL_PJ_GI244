@@ -8,5 +8,10 @@ public class DropWorld : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

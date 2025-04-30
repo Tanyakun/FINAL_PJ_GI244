@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1231960638}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -986,26 +986,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - totalSpawnEnemies: 4
-    numberOfRandomSpawnPoint: 1
+  - totalSpawnEnemies: 2
+    numberOfRandomSpawnPoint: 6
     delayStart: 4
     spawnInterval: 2
-    numberOfPowerUp: 0
+    numberOfPowerUp: 1
+    totalSpawnBoss: 0
+  - totalSpawnEnemies: 4
+    numberOfRandomSpawnPoint: 6
+    delayStart: 4
+    spawnInterval: 2
+    numberOfPowerUp: 1
+    totalSpawnBoss: 0
   - totalSpawnEnemies: 6
-    numberOfRandomSpawnPoint: 2
-    delayStart: 2
+    numberOfRandomSpawnPoint: 6
+    delayStart: 4
     spawnInterval: 2
-    numberOfPowerUp: 1
+    numberOfPowerUp: 2
+    totalSpawnBoss: 0
   - totalSpawnEnemies: 8
-    numberOfRandomSpawnPoint: 4
-    delayStart: 2
+    numberOfRandomSpawnPoint: 6
+    delayStart: 4
     spawnInterval: 2
-    numberOfPowerUp: 1
+    numberOfPowerUp: 2
+    totalSpawnBoss: 0
   - totalSpawnEnemies: 10
     numberOfRandomSpawnPoint: 6
     delayStart: 5
-    spawnInterval: 0.5
-    numberOfPowerUp: 2
+    spawnInterval: 2
+    numberOfPowerUp: 3
+    totalSpawnBoss: 0
+  - totalSpawnEnemies: 12
+    numberOfRandomSpawnPoint: 6
+    delayStart: 5
+    spawnInterval: 2
+    numberOfPowerUp: 3
+    totalSpawnBoss: 0
+  - totalSpawnEnemies: 14
+    numberOfRandomSpawnPoint: 6
+    delayStart: 5
+    spawnInterval: 2
+    numberOfPowerUp: 3
+    totalSpawnBoss: 0
+  - totalSpawnEnemies: 0
+    numberOfRandomSpawnPoint: 6
+    delayStart: 5
+    spawnInterval: 5
+    numberOfPowerUp: 6
+    totalSpawnBoss: 3
   spawnPoints:
   - {fileID: 1455485778}
   - {fileID: 1934027255}
@@ -1014,6 +1042,7 @@ MonoBehaviour:
   - {fileID: 1176266729}
   - {fileID: 1651429377}
   enemyPrefab: {fileID: 8279026461862980053, guid: bb420f9ac2083cd4ea138531408225e7, type: 3}
+  bossPrefab: {fileID: 8279026461862980053, guid: 5c84c4776c7a31b4d8000c0f716e1f3f, type: 3}
   powerUpPrefab: {fileID: 3709808119504899638, guid: 8cd96a1609dc5a04f8f54162c32cab4a, type: 3}
 --- !u!4 &2000910670
 Transform:
