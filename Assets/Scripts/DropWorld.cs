@@ -11,7 +11,11 @@ public class DropWorld : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            var player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.RespawnOrGameOver();
+            }
         }
     }
 }

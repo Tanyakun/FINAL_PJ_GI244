@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine smashRoutine;
 
+    public Image[] hearts; // Image HP
+    private int lives = 2;
+    private Vector3 spawnPoint;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,6 +31,9 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         smashAction = InputSystem.actions.FindAction("Smash");
         breakAction = InputSystem.actions.FindAction("Break");
+
+        spawnPoint = transform.position; // save position spawnpoint
+        UpdateHeartsUI(); // call Update HP
     }
 
     // Update is called once per frame
@@ -43,6 +51,31 @@ public class PlayerController : MonoBehaviour
             smashRoutine = StartCoroutine(SmashRoutine());
         }
     }
+
+    public void RespawnOrGameOver()
+    {
+        if (lives > 0)
+        {
+            hearts[lives].enabled = false; // hide HP
+            lives--;
+            transform.position = spawnPoint;
+            rb.linearVelocity = Vector3.zero;
+        }
+        else
+        {
+            Debug.Log("Game Over");
+            hearts[0].enabled = false; // Last hide HP
+            Destroy(gameObject);
+        }
+    }// Respawn 2 lives
+
+    private void UpdateHeartsUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].enabled = (i <= lives);
+        }
+    }// Update HP
 
     /*IEnumerator UpdeteRoutine()
     {
