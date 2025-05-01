@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -100,8 +100,17 @@ public class SpawnManager : MonoBehaviour
             for (int i = 0; i < wave.totalSpawnBoss; i++)
             {
                 Transform spawnPoint = selectedSpawnPoints[Random.Range(0, selectedSpawnPoints.Count)];
-                Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
-                yield return new WaitForSeconds(wave.spawnInterval); // Optional: wait between boss spawns
+                GameObject boss = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+                Debug.Log("Boss Spawned at Wave " + currentWaveIndex);
+
+                // 🔥 เพิ่มตรงนี้: ให้ Boss ใช้ท่าพิเศษถ้าเป็น Wave 8
+                if (currentWaveIndex == 7) // Wave 8 (index เริ่มจาก 0)
+                {
+                    BossSpecialSkill skill = boss.AddComponent<BossSpecialSkill>();
+                    skill.platform = GameObject.Find("Island").transform;
+                }
+
+                yield return new WaitForSeconds(wave.spawnInterval);
             }// Number of Boss
 
             while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
