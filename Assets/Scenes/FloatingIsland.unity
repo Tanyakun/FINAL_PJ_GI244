@@ -3294,7 +3294,7 @@ MonoBehaviour:
     numberOfRandomSpawnPoint: 6
     delayStart: 5
     spawnInterval: 5
-    numberOfPowerUp: 6
+    numberOfPowerUp: 0
     totalSpawnBoss: 1
   spawnPoints:
   - {fileID: 1455485778}

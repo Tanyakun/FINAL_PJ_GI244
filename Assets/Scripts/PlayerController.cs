@@ -54,6 +54,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
     public void RespawnOrGameOver()
     {
         if (lives > 0)
